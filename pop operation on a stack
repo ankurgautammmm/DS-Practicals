@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 5  
+
+
+struct Stack {
+    int arr[MAX];
+    int top;
+};
+
+
+void initStack(struct Stack* stack) {
+    stack->top = -1;
+}
+
+
+int isEmpty(struct Stack* stack) {
+    return stack->top == -1;
+}
+
+
+int pop(struct Stack* stack) {
+    if (isEmpty(stack)) {
+        printf("Stack underflow! Cannot pop\n");
+        return -1;
+    } else {
+        int value = stack->arr[stack->top--];
+        printf("%d popped from stack\n", value);
+        return value;
+    }
+}
+
+
+int main() {
+    struct Stack stack;
+    initStack(&stack);
+
+
+    stack.arr[++stack.top] = 10;
+    stack.arr[++stack.top] = 20;
+    stack.arr[++stack.top] = 30;
+    stack.arr[++stack.top] = 40;
+    stack.arr[++stack.top] = 50;
+
+
+    pop(&stack);
+    pop(&stack);
+    pop(&stack);
+
+
+    pop(&stack);
+    pop(&stack);
+    pop(&stack);  
+
+    return 0;
+}
