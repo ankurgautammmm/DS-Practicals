@@ -1,0 +1,32 @@
+#include <stdio.h>
+int main(){
+    int arr[5];
+    
+    int i,j;
+     printf("enter the position of array to delete: \n");
+     for (i =0;i<5;i++){
+          scanf("%d",&arr[i]);
+     }
+    int pos,count=0;
+    printf("enter the position of array to delete");
+    scanf("%d",&pos);
+    for (i =0;i<5;i++){
+        if (pos==i+1){
+            for(j=i;j<5;j++){
+                arr[j]=arr[j+1];
+                count+= 1;
+            
+            }
+        }
+    }
+    printf("\n");
+    if (count==0){
+        printf("not found\n");
+    }
+    else{
+        for(i = 0;i<4;i++){
+            printf("%d\t",arr[i]);
+        }
+    }
+    return 0;
+}
