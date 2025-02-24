@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+#define MAX 100
+
+struct SparseMatrix {
+    int row;
+    int col;
+    int value;
+};
+
+void display(struct SparseMatrix arr[], int size, int rows, int cols) {
+    int matrix[rows][cols];
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            matrix[i][j] = 0; 
+        }
+    }
+
+    for(int i = 0; i < size; i++) {
+        matrix[arr[i].row][arr[i].col] = arr[i].value;
+    }
+
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int rows, cols, non_zero_elements;
+    
+    printf("Enter the number of rows and columns: ");
+    scanf("%d %d", &rows, &cols);
+    
+    printf("Enter the number of non-zero elements: ");
+    scanf("%d", &non_zero_elements);
+    
+    struct SparseMatrix sparse[non_zero_elements];
+    
+    printf("Enter row, column, and value for each non-zero element:\n");
+    for(int i = 0; i < non_zero_elements; i++) {
+        printf("Element %d: ", i + 1);
+        scanf("%d %d %d", &sparse[i].row, &sparse[i].col, &sparse[i].value);
+    }
+    
+    printf("\nSparse Matrix Representation:\n");
+    display(sparse, non_zero_elements, rows, cols);
+
+    return 0;
+}
